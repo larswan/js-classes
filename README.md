@@ -68,7 +68,7 @@ class Rectangle {
 
 [MDN Webdocs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_properties)
 
-Properties or methods that can't be accessed from outside the class. Helps maintain the classes internal state since 
+Properties or methods that can't be accessed from outside the class. Helps maintain the classes internal state since other private fields can't be changed by other code - can only be changed by class functions.
 
 - Prefixed with #
 - Private identifiers must be unique
