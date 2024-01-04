@@ -5,7 +5,7 @@ const TeamDisplay = ({ team }) => {
   return (
     <div className="team">
       {team.map((poke, i) => {
-        return <MonsterDisplay monster={poke} key={i} />;
+        return <MonsterDisplay monster={poke} key={i} index={i} />;
       })}
     </div>
   );

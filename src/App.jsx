@@ -4,21 +4,24 @@ import fetchPokemon from "./pokemon/pokemonFetch";
 import { Monster, Team } from "./pokemon/pokemonClasses";
 import TeamDisplay from "./pokemon/TeamDisplay";
 
+export let pokeTeam = new Team();
+
 function App() {
   const [pokename, setPokename] = useState("");
-  const [pokeTeam, setPokeTeam] = useState(new Team());
 
-  useEffect(() => {
-    let storedTeam = localStorage.getItem("pokeTeam");
+  // const [pokeTeam, setPokeTeam] = useState(new Team());
 
-    if (storedTeam) {
-      storedTeam = JSON.parse(storedTeam);
-      setPokeTeam(storedTeam);
-    }
+  // useEffect(() => {
+  //   let storedTeam = localStorage.getItem("pokeTeam");
 
-    console.log("Stored team: ");
-    console.log(storedTeam);
-  }, []);
+  //   if (storedTeam) {
+  //     storedTeam = JSON.parse(storedTeam);
+  //     // setPokeTeam(storedTeam);
+  //   }
+
+  //   console.log("Stored team: ");
+  //   console.log(storedTeam);
+  // }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
