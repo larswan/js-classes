@@ -11,17 +11,18 @@ function App() {
 
   // const [pokeTeam, setPokeTeam] = useState(new Team());
 
-  // useEffect(() => {
-  //   let storedTeam = localStorage.getItem("pokeTeam");
+  useEffect(() => {
+    let storedTeam = localStorage.getItem("pokeTeam");
 
-  //   if (storedTeam) {
-  //     storedTeam = JSON.parse(storedTeam);
-  //     // setPokeTeam(storedTeam);
-  //   }
+    if (storedTeam) {
+      storedTeam = JSON.parse(storedTeam);
+      pokeTeam.teamArray = storedTeam.teamArray;
+      // setPokeTeam(storedTeam);
+    }
 
-  //   console.log("Stored team: ");
-  //   console.log(storedTeam);
-  // }, []);
+    console.log("Stored team: ");
+    console.log(storedTeam);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,9 +38,16 @@ function App() {
     setPokename("");
   };
 
+  const handleClear = () => {
+    localStorage.removeItem("pokeTeam");
+    pokeTeam = new Team();
+    console.log(pokeTeam);
+  };
+
   return (
     <div className="appContainer">
       <h2>Pokemon Team</h2>
+      <button onClick={handleClear}>Clear Store</button>
       <form name="pokemonForm" onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
@@ -48,9 +56,11 @@ function App() {
         ></input>
         <button type="submit">Add</button>
       </form>
-
       {pokeTeam.teamArray.length === 0 ? null : (
         <TeamDisplay team={pokeTeam.teamArray} />
+      )}
+      {pokeTeam.teamArray.length < 2 ? null : (
+        <button onClick={() => pokeTeam.moveUp(1)}>Move Up</button>
       )}
     </div>
   );

@@ -25,6 +25,7 @@ export class Team {
       const temp = this.teamArray[index];
       this.teamArray[index] = this.teamArray[index - 1];
       this.teamArray[index - 1] = temp;
+      console.log(this.teamArray);
     }
   }
 
@@ -40,19 +41,3 @@ export class Team {
     return this.teamArray;
   }
 }
-
-// export let pokeTeam = new Team();
-// pokeTeam.teamArray = [
-//   {
-//     id: 1,
-//     name: "ditto",
-//     sprite:
-//       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
-//   },
-//   {
-//     id: 112,
-//     name: "ditto",
-//     sprite:
-//       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png",
-//   },
-// ];
