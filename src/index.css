@@ -59,7 +59,6 @@ button:focus-visible {
   flex-direction: row;
   justify-content: space-evenly;
   width: 50vw;
-  
 }
 
 .monster {
@@ -71,7 +70,7 @@ button:focus-visible {
   margin: 2px;
 }
 
-.monster h3{
+.monster h3 {
   color: black;
   margin: 0px;
 }
