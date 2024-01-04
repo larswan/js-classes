@@ -9,6 +9,8 @@ const MonsterDisplay = ({ monster }) => {
       <h3>
         #{monster.id} {monster.name}
       </h3>
+      <button>UP</button>
+      <button>DOWN</button>
     </div>
   );
 };
