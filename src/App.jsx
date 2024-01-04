@@ -1,21 +1,23 @@
 import { useState, useEffect } from "react";
 import "./examples/basicExample";
 import fetchPokemon from "./pokemon/pokemonFetch";
-import { Monster } from "./pokemon/pokemonClasses";
-import { pokeTeam } from "./pokemon/pokemonClasses";
+import { Monster, Team } from "./pokemon/pokemonClasses";
 import TeamDisplay from "./pokemon/TeamDisplay";
+
+let pokeTeam = new Team();
 
 function App() {
   const [pokename, setPokename] = useState("");
 
-  // get old team on page refresh
   useEffect(() => {
     let storedTeam = localStorage.getItem("pokeTeam");
 
     if (storedTeam) {
-      pokeTeam.teamArray = JSON.parse(storedTeam);
+      storedTeam = JSON.parse(storedTeam);
+      pokeTeam.teamArray = storedTeam;
     }
-    console.log("Memory: ");
+
+    console.log("Stored team: ");
     console.log(pokeTeam);
   }, []);
 
@@ -26,7 +28,7 @@ function App() {
 
     pokeTeam.addMonster(newPoke);
 
-    localStorage.setItem("pokeTeam", JSON.stringify(pokeTeam.getTeam()));
+    localStorage.setItem("pokeTeam", JSON.stringify(pokeTeam));
 
     console.log(pokeTeam.teamArray);
     setPokename("");
@@ -44,8 +46,8 @@ function App() {
         <button type="submit">Add</button>
       </form>
 
-      {pokeTeam.teamArray.length === 0 ? null : (
-        <TeamDisplay team={pokeTeam.teamArray} />
+      {pokeTeam.getTeam().length === 0 ? null : (
+        <TeamDisplay team={pokeTeam.getTeam()} />
       )}
     </div>
   );

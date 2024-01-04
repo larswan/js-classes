@@ -2,7 +2,7 @@
 // import { pokeTeam } from "../App"
 import PropTypes from "prop-types";
 
-const MonsterDisplay = (monster) => {
+const MonsterDisplay = ({ monster }) => {
   return (
     <div className="monster">
       <img src={monster.sprite} />

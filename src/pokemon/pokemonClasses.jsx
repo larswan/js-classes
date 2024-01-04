@@ -41,4 +41,18 @@ export class Team {
   }
 }
 
-export let pokeTeam = new Team();
+// export let pokeTeam = new Team();
+// pokeTeam.teamArray = [
+//   {
+//     id: 1,
+//     name: "ditto",
+//     sprite:
+//       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
+//   },
+//   {
+//     id: 112,
+//     name: "ditto",
+//     sprite:
+//       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png",
+//   },
+// ];
