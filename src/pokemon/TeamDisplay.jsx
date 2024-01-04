@@ -12,7 +12,7 @@ const TeamDisplay = ({ team }) => {
 };
 
 TeamDisplay.propTypes = {
-  team: PropTypes.arrayOf(PropTypes.object).isRequired,
+  team: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default TeamDisplay;

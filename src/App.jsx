@@ -14,7 +14,7 @@ function App() {
 
     if (storedTeam) {
       storedTeam = JSON.parse(storedTeam);
-      pokeTeam.teamArray = storedTeam;
+      pokeTeam = storedTeam;
     }
 
     console.log("Stored team: ");
@@ -28,6 +28,7 @@ function App() {
 
     pokeTeam.addMonster(newPoke);
 
+    localStorage.removeItem("pokeTeam");
     localStorage.setItem("pokeTeam", JSON.stringify(pokeTeam));
 
     console.log(pokeTeam.teamArray);
@@ -46,8 +47,8 @@ function App() {
         <button type="submit">Add</button>
       </form>
 
-      {pokeTeam.getTeam().length === 0 ? null : (
-        <TeamDisplay team={pokeTeam.getTeam()} />
+      {pokeTeam.teamArray.length === 0 ? null : (
+        <TeamDisplay team={pokeTeam.teamArray} />
       )}
     </div>
   );
