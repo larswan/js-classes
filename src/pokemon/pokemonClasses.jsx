@@ -1,9 +1,9 @@
 // Declaration
 export class Monster {
-  constructor(response) {
-    this.id = response.id;
-    this.name = response.name;
-    this.sprite = response.sprites.front_default;
+  constructor(id, name, sprite) {
+    this.id = id;
+    this.name = name;
+    this.sprite = sprite;
   }
 }
 
@@ -18,6 +18,7 @@ export class Team {
       this.teamArray.pop();
     }
     this.teamArray.unshift(monster);
+    return this;
   }
 
   moveUp(index) {
@@ -40,19 +41,3 @@ export class Team {
     return this.teamArray;
   }
 }
-
-// export let pokeTeam = new Team();
-// pokeTeam.teamArray = [
-//   {
-//     id: 1,
-//     name: "ditto",
-//     sprite:
-//       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
-//   },
-//   {
-//     id: 112,
-//     name: "ditto",
-//     sprite:
-//       "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/112.png",
-//   },
-// ];

@@ -13,10 +13,15 @@ function App() {
 
     if (storedTeam) {
       storedTeam = JSON.parse(storedTeam);
+      console.log(storedTeam);
+      storedTeam.teamArray = storedTeam.teamArray.map((poke) => {
+        return new Monster(poke.id, poke.name, poke.sprite);
+      });
+
       setPokeTeam(storedTeam);
     }
 
-    console.log("Stored team: ");
+    console.log("New stored team: ");
     console.log(storedTeam);
   }, []);
 
@@ -25,18 +30,24 @@ function App() {
 
     let newPoke = new Monster(await fetchPokemon(pokename));
 
-    pokeTeam.addMonster(newPoke);
+    setPokeTeam(pokeTeam.addMonster(newPoke));
 
     localStorage.removeItem("pokeTeam");
     localStorage.setItem("pokeTeam", JSON.stringify(pokeTeam));
 
-    console.log(pokeTeam.teamArray);
     setPokename("");
+  };
+
+  const handleClear = () => {
+    localStorage.removeItem("pokeTeam");
+    setPokeTeam(new Team());
+    console.log(pokeTeam);
   };
 
   return (
     <div className="appContainer">
       <h2>Pokemon Team</h2>
+      <button onClick={handleClear}>Clear Store</button>
       <form name="pokemonForm" onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
@@ -45,9 +56,11 @@ function App() {
         ></input>
         <button type="submit">Add</button>
       </form>
-
       {pokeTeam.teamArray.length === 0 ? null : (
-        <TeamDisplay team={pokeTeam.teamArray} />
+        <TeamDisplay team={pokeTeam} setPokeTeam={setPokeTeam} />
+      )}
+      {pokeTeam.teamArray.length < 2 ? null : (
+        <button onClick={() => pokeTeam.moveUp(1)}>Move Up</button>
       )}
     </div>
   );
