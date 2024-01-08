@@ -140,16 +140,37 @@ There's a whole thing called Class Components. They are extensions of the Compon
 Here's how you declare one:
 
 ```js
-import React, {Component} from 'react'
+import React, { Component } from "react";
 
-class ClassComponent extends React.Component{
-  this.constructor(){
+class StatefulComponent extends Component {
+  constructor(props) {
+    super(props);
 
+    // Initialize state in the constructor
+    this.state = {
+      counter: 0,
+      message: "Hello, State!",
+    };
   }
-  this.state = {
 
+  // Example method to update state
+  incrementCounter = () => {
+    this.setState((prevState) => ({
+      counter: prevState.counter + 1,
+    }));
+  };
+
+  // ESSENTIAL: render method that gets run when state changes. Access state using "this"
+  render() {
+    return (
+      <div>
+        <h2>{this.state.message}</h2>
+        <p>Counter: {this.state.counter}</p>
+        <button onClick={this.incrementCounter}>Increment Counter</button>
+      </div>
+    );
   }
-
-  render()
 }
+
+export default StatefulComponent;
 ```
